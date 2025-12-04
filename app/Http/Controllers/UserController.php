@@ -46,4 +46,8 @@ class UserController extends Controller
         return back();
     }
 
+    public function invite()
+    {
+        return inertia('users/Invite');
+    }
 }

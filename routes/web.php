@@ -21,6 +21,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('users', [UserController::class, 'index']);
         Route::get('users/create', [UserController::class, 'create']);
         Route::post('users', [UserController::class, 'store']);
+
+        Route::get('users/invite', [UserController::class, 'invite']);
     });
 });
 
