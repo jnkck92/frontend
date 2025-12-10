@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\InvitationController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -18,9 +19,12 @@ Route::get('dashboard', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('users', [UserController::class, 'index']);
-        Route::get('users/create', [UserController::class, 'create']);
-        Route::post('users', [UserController::class, 'store']);
+        Route::get('users', [UserController::class, 'index'])->name('users.index');
+        Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+
+        Route::get('users/invite', [UserController::class, 'invite'])->name('users.invite');
+
+        Route::post('users', [UserController::class, 'store'])->name('users.store');
     });
 });
 
